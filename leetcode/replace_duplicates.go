@@ -28,7 +28,6 @@ func removeDuplicates(nums []int) int {
 			j++
 		}
 	}
-	fmt.Println(nums)
 	return j+1
 }
 
