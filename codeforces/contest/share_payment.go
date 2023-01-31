@@ -15,19 +15,20 @@ func main() {
     fmt.Fscan(in, &ordersNum)
 
     for i := 0; i < ordersNum; i++ {
-		var result, itemsNum int
-		setItems := make(map[int]int)
-		fmt.Fscan(in, &itemsNum)
+	var result, itemsNum int
+	setItems := make(map[int]int)
+	fmt.Fscan(in, &itemsNum)
+
         for l := 0; l < itemsNum; l++ {
-			var itemId int
-			fmt.Fscan(in, &itemId)
-			setItems[itemId]++
-		}
-		for k, v := range setItems {
-			result += k * (v - v/3)
-			
-		}
-		fmt.Fprintln(out, result)
+		var itemId int
+		fmt.Fscan(in, &itemId)
+		setItems[itemId]++
+	}
+	    
+	for k, v := range setItems {
+		result += k * (v - v/3)		
+	}
+	fmt.Fprintln(out, result)
 	}
 }
 
