@@ -1,12 +1,12 @@
 package main
 
 import (
-    "fmt"
-    "bufio"
-    "os"
+	"bufio"
+	"fmt"
+	"os"
 )
 
-func Abs(x int) int {
+func abs(x int) int {
 	if x < 0 {
 		return x * -1
 	}
@@ -30,22 +30,26 @@ func main() {
 			fmt.Fscan(in, &devLevel)
 			devList = append(devList, devLevel)
 		}
-		fmt.Println(devList)
 		
-		for j := 0; j <= len(devList) - 1; j++ {
-			fmt.Println(len(devList))
-			for k := 1; k <= len(devList) - 1; k++ {
-				if k == 4 {
-				 	fmt.Fprintln(out, j + 1, " ", k + 1)
+		teamsCount := 0
+		for i := 0; i <= len(devList) - 1; i++ {
+			if devList[i] == -1 { continue }
+			tmpAbsMin := 9999999
+			lastIndex := 0
+			for j := 1; j <= len(devList) - 1; j++ {
+				if devList[j] != -1 && j != i && abs(devList[i] - devList[j]) < tmpAbsMin {
+					tmpAbsMin = abs(devList[i] - devList[j])
+					lastIndex = j
 				}
-				if Abs(devList[j] - devList[k]) == 1 {
-					fmt.Fprintln(out, j + 1, " ", k + 1)
-					devList = append(devList[j:k], devList[k:]...)
-					break
+				if j == len(devList) - 1 {
+					fmt.Fprintln(out, i+1, " ", lastIndex+1)
+					devList[i] = -1
+					devList[lastIndex] = -1
+					teamsCount++
 				}
 			}
 		}
-		fmt.Println(devList)
+		fmt.Fprintln(out)
 	}
 }
 
