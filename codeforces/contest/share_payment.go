@@ -25,7 +25,6 @@ func main() {
 		}
 		for k, v := range setItems {
 			result += k * (v - v/3)
-			
 		}
 		fmt.Fprintln(out, result)
 	}
