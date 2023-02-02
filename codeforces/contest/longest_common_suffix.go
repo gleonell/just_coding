@@ -18,10 +18,6 @@ func longestCommonSuffix(setWords []string, currentRequest string) string {
 		}
 	}
 
-	// if currentRequest == setWords[lastEnterIndex] {
-	// 	lastEnterIndex--
-	// }		
-
 	return setWords[lastEnterIndex]
 }
 
@@ -43,7 +39,7 @@ func main() {
 
 	for i := 0; i < requestCount; i ++ {
 		var currentRequest string
-		fmt.Fscan(in, &currentRequest) // need to find longest common suffix of currentRequest in words in setWords
+		fmt.Fscan(in, &currentRequest)
 		fmt.Fprintln(out, longestCommonSuffix(setWords, currentRequest))
 	}
 }
